@@ -2,8 +2,7 @@
 // create a controller to route initial page
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 //class HomeController to use method __invoke and send initial page
 class HomeController extends Controller

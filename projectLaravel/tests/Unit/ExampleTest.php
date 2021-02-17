@@ -5,9 +5,6 @@ namespace Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use App\Http\Controllers\UserController;
 
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
-
 class ExampleTest extends TestCase
 {
     /**

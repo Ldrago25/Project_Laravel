@@ -15,10 +15,10 @@ use App\Http\Controllers\UserController;
 */
 
 //Route for page initial
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('/home');
 
 //Route for user login
-Route::get('userLogin', [UserController::class,'login']);
+Route::get('userLogin', [UserController::class,'login'])->name('/userLogin');
 
 //Route for user create
-Route::get('userCreate', [UserController::class,'create']);
+Route::get('userCreate', [UserController::class,'create'])->name('/userCreate');

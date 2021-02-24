@@ -9,8 +9,8 @@
 </head>
 <body>
     <div id="content">
-        <a href="{{route("/userLogin")}}">sign in</a>
         <h1 class="content">Initial Page</h1>
+        <h2><a href="{{route("/userLogin")}}" class="edit">sign in</a></h2>
     </div>
 </body>
 </html>

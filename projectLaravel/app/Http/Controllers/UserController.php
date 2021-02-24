@@ -9,11 +9,26 @@ class UserController extends Controller
 {
     //method to call login page
     public function login(){
-       // $user=User::all();
         return view('user.login');
     }
     //method to call create page
     public function create(){
         return view('user.create');
+    }
+    //method to receive the form data login
+    public function userValidate(Request $request){
+        //validar datos que llegan del formulario
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+
+        $Objectuser=new User();
+        $user=$Objectuser->validateUser($request);
+
+    }
+    //method to receive the form data
+    public function createForm(Request $request){
+
     }
 }

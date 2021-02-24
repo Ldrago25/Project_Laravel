@@ -1,3 +1,18 @@
 body {
     background-color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: white;
+    color: black;
+}
+
+.edit {
+    color: black;
 }

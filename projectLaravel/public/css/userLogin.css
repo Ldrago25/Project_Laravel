@@ -1,0 +1,27 @@
+#bodyForm,
+#headerTittle,
+#form {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#bodyForm {
+    height: 20vh;
+}
+
+#form {
+    height: 20vh;
+    justify-content: space-around;
+}
+
+#buttonLogin {
+    width: 5%;
+    height: 25%;
+}

@@ -22,3 +22,9 @@ Route::get('userLogin', [UserController::class,'login'])->name('/userLogin');
 
 //Route for user create
 Route::get('userCreate', [UserController::class,'create'])->name('/userCreate');
+
+//Route for validate Login
+Route::post('userValidate', [UserController::class,'userValidate'])->name("user.validate");
+
+//Route for create form user
+Route::post('userCreateForm',[UserController::class,'createForm'])->name("user.form");

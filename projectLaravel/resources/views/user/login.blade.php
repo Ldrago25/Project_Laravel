@@ -9,10 +9,11 @@
 </head>
 <body>
     <div id="headerTittle">
-        <h1>Login page</h1>
+        <h1>Pagina Web de Laravel</h1>
     </div>
     <div id="bodyForm">
         <!-- formulario para los datos del login-->
+       
         <form  id="form" action="{{route("user.validate")}}" method="POST">
             <!--
                 se crea un token para que usuarios ajenos no puedan manipular 
@@ -27,10 +28,18 @@
             <label>
                 Inicio de sesion
             </label>
-            <input type="text" name="email" placeholder="Correo electronico">
-            <input type="text" name="password" placeholder="Contraseña">
+            <input type="text" name="email" placeholder="Correo electronico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
             <button type="submit" id="buttonLogin">Ingresar</button>
+            @php
+            if($valueLogin=='contrasenia erronea'):
+            @endphp
+            <h6>Contraseña incorrecta por favor verifique</h6>
+            @php
+            endif;
+            @endphp
         </form>
+       
     </div>
 </body>
 </html>

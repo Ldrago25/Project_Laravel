@@ -14,6 +14,7 @@ class User extends Model
     use HasFactory;
     //method to search user in database
     public function validateUser(Request $request){
+       
         //hago la peticion a la base de datos
         $user=DB::table('users')->where('email',$request->email)->first();
         //valido que el objeto que me devuelva no sea null
@@ -26,6 +27,5 @@ class User extends Model
             }
         }
         return "Usuario no encontrado";
-        
     }
 }

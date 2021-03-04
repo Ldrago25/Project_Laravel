@@ -16,9 +16,12 @@ use App\Http\Controllers\UserController;
 
 //Route for page initial
 Route::get('/', HomeController::class)->name('/home');
-
+/*
+    por convecion se puede generar una ruta globar con Route::resource('user', UserController::class);
+    pero para el usuario por ahora no lo necesito
+*/
 //Route for user login
-Route::get('userLogin', [UserController::class,'login'])->name('/userLogin');
+Route::get('userLogin/{valueLogin}', [UserController::class,'login'])->name('/userLogin');
 
 //Route for user create
 Route::get('userCreate', [UserController::class,'create'])->name('/userCreate');
@@ -28,3 +31,10 @@ Route::post('userValidate', [UserController::class,'userValidate'])->name("user.
 
 //Route for create form user
 Route::post('userCreateForm',[UserController::class,'createForm'])->name("user.form");
+
+//Route for show users if he user is admin
+Route::get('user/{id}',[UserController::class,'show'])->name("user.show");
+
+Route::put('user/{id}',[UserController::class,'update'])->name("user.update");
+
+Route::delete('user/{id}', [UserController::class,'destroy'])->name("user.destroy");

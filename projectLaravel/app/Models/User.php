@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -14,11 +15,12 @@ class User extends Model
     use HasFactory;
     //method to search user in database
     public function validateUser(Request $request){
-       
+        
         //hago la peticion a la base de datos
         $user=DB::table('users')->where('email',$request->email)->first();
+      
         //valido que el objeto que me devuelva no sea null
-        if(!isNull($user)){
+        if(is_object($user)){
             //si se encontro el objeto del usuario validar contrasenia
             if($user->password==$request->password){
                 return $user;
@@ -27,5 +29,23 @@ class User extends Model
             }
         }
         return "Usuario no encontrado";
+    }
+    public function validateForm(Request $request){
+        if($request->password1!=$request->password){
+            return 'contrasenias no iguales';
+        }else{
+            try{
+                $result= DB::table('users')->insert([
+                    'name' => $request->name,
+                    'surname' => $request->surname,
+                    'email'=>$request->email,
+                    'password'=>$request->password,
+                    'rol'=>'suscriptor',
+                    ]);
+                return 'finish';
+               }catch(Exception $e){
+                   return "correo repetido";
+               }
+        }
     }
 }

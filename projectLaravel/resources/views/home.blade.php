@@ -11,7 +11,7 @@
     <div id="content">
         <h1 class="content">Initial Page</h1>
         <h2><a href="{{route("/userLogin",'null')}}" class="edit">sign in</a></h2>
-        <h2><a href="{{route("/userCreate")}}" class="edit">sign up</a></h2>
+        <h2><a href="{{route("/userCreate",'null')}}" class="edit">sign up</a></h2>
     </div>
 </body>
 </html>

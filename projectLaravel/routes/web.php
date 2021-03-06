@@ -24,7 +24,7 @@ Route::get('/', HomeController::class)->name('/home');
 Route::get('userLogin/{valueLogin}', [UserController::class,'login'])->name('/userLogin');
 
 //Route for user create
-Route::get('userCreate', [UserController::class,'create'])->name('/userCreate');
+Route::get('userCreate/{valueValidate}', [UserController::class,'create'])->name('/userCreate');
 
 //Route for validate Login
 Route::post('userValidate', [UserController::class,'userValidate'])->name("user.validate");

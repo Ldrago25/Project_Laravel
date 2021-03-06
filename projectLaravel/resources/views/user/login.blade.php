@@ -34,7 +34,14 @@
             @php
             if($valueLogin=='contrasenia erronea'):
             @endphp
-            <h6>Contraseña incorrecta por favor verifique</h6>
+            <h5>Contraseña incorrecta por favor verifique</h5>
+            @php
+            endif;
+            @endphp
+            @php
+            if($valueLogin=='usuario no encontrado'):
+            @endphp
+            <h5>Usuario no encontrado por favor revise sus credenciales</h5>
             @php
             endif;
             @endphp

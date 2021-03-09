@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use function PHPUnit\Framework\isNull;
-
 class User extends Model
 {
     use HasFactory;
@@ -30,6 +28,7 @@ class User extends Model
         }
         return "Usuario no encontrado";
     }
+
     public function validateForm(Request $request){
         if($request->password1!=$request->password){
             return 'contrasenias no iguales';
@@ -40,6 +39,8 @@ class User extends Model
                     'surname' => $request->surname,
                     'email'=>$request->email,
                     'password'=>$request->password,
+                    'email_verified_at'=> now()->utc(),
+                    'created_at'=>now()->utc(),
                     'rol'=>'suscriptor',
                     ]);
                 return 'finish';

@@ -15,8 +15,12 @@ class AddPackageIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //se crea la columna package_id y se le dice que es una clave foranea
-            $table->unsignedBigInteger("package_id")->unique()->nullable();
-            $table->foreign('package_id')->references('id')->on('packages');
+            $table->unsignedBigInteger("package_id")->nullable()->after("id");
+            $table->foreign('package_id')
+            ->references('id')
+            ->on('packages')
+            ->onDelete("set null")
+            ->onUpdate("cascade");
         });
     }
 
@@ -28,6 +32,7 @@ class AddPackageIdToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+           $table->dropForeign(['package_id']);
            $table->dropColumn("package_id");
         });
     }

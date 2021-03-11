@@ -31,11 +31,11 @@
         <h3> {{$_SESSION["user"]->name}}</h3>
     </div>
     <div>
-        <form action="{{route("package.show")}}" method="GET">
+        <form action="{{route("user.factura")}}" method="GET">
              @csrf
              <button type="submit">Ver factura a pagar</button>
         </form>
-        <form action="{{route("package.show")}}" method="GET">
+        <form action="{{route("user.autorizacion")}}" method="GET">
             @csrf
             <button type="submit">Cambiar plan del paquete</button>
        </form>
@@ -43,6 +43,13 @@
 @php
     endif;
 @endphp
-
+@php
+    if(isset($_SESSION["auto"])&&$_SESSION["auto"]=='finish'):
+@endphp
+<h3>Solicitud enviada con exito, esperar respuesta por los Administradores</h3>
+@php
+unset($_SESSION["auto"]);
+    endif;
+@endphp
 </body>
 </html>

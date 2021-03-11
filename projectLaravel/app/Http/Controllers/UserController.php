@@ -2,6 +2,7 @@
 //create a controller to use pages of users
 namespace App\Http\Controllers;
 
+use App\Models\Autorizacion;
 use App\Models\Package;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,6 +23,14 @@ class UserController extends Controller
         return view('user.create',compact('valueValidate'));
     }
 
+    public function admin(){
+        return view("user.admin");
+    }
+
+    public function suscriptor(){
+        return view("user.suscriptor");
+    }
+
     //method to receive the form data login
     public function userValidate(Request $request){
         //validar datos que llegan del formulario
@@ -35,12 +44,12 @@ class UserController extends Controller
         $user=$Objectuser->validateUser($request);
         //valido que  la respuesta sea un usuario o no
         if(is_object($user)){
-
+            
             $_SESSION["user"]=$user;
             if(isset($_SESSION["user"])&&$_SESSION["user"]->rol=='admin'){
-                return view("user.admin");
+                return redirect()->route('user.admin');
             }else{
-                return view("user.suscriptor");
+                return redirect()->route('user.suscriptor');
             }
 
         }else if($user=='Contrasenia erronea'){
@@ -65,9 +74,9 @@ class UserController extends Controller
             return redirect()->route('/userCreate','null');
         }
     }
+
     public function packages(){
         $packages=Package::all();
-
         return view('user.packages',compact('packages'));
     }
 
@@ -78,4 +87,59 @@ class UserController extends Controller
         $_SESSION["buy"]='update';
         return redirect()->route('user.packages');
     }
+
+    public function factura(){
+        $package=Package::find($_SESSION["user"]->package_id);
+        
+        return view("user.factura",compact('package'));
+    }
+
+    public function show(){
+        $users=User::all();
+        return view("user.show",compact('users'));
+    }
+
+    public function updateUser($id){
+        $userE=User::find($id);
+        $_SESSION["Editar"]=$userE->id;
+        return view("user.update",compact('userE'));
+    }
+      
+    public function destroy($id){
+        $result=User::find($id);
+        $result->delete();
+        return redirect()->route("user.show");
+    }
+
+    public function dataUpdate(Request $request){
+        $edit=User::where('id',$_SESSION["Editar"])->update([
+            'name'=>$request->nombreE,
+            'surname'=>$request->ApellidoE,
+            'email'=>$request->correo,
+            'rol'=>$request->rol
+        ]);
+        unset($_SESSION["Editar"]);
+        return redirect()->route("user.show");
+    }
+
+    public function autorizacion(){
+        $autorizacions=Autorizacion::all();
+        return view("user.autorizacion",compact('autorizacions'));
+    }
+
+    public function destroyAut($id){
+        $result=autorizacion::find($id);
+        $result->delete();
+        return redirect()->route("autorizacion.show");
+    }
+
+    public function updateAut($id,$idUser){
+        $edit=User::where('id',$idUser)->update([
+            'package_id'=>NULL
+        ]);
+        $result=autorizacion::find($id);
+        $result->delete();
+        return redirect()->route("autorizacion.show");
+    }
+    
 }

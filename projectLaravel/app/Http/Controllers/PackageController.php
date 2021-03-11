@@ -16,6 +16,7 @@ class PackageController extends Controller
         $internets=Internet::all();
         $cables=Cable::all();
         $telefonias=Telefonia::all();
+        //return $cables[0]->canales;
         return view("services.package",compact('internets','cables','telefonias'));
     }
     public function create(Request $request){

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutorizacionController;
 use App\Http\Controllers\CableController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\InternetController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\TelefoniaController;
 use App\Http\Controllers\UserController;
+use App\Models\Autorizacion;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,12 +43,26 @@ Route::get('userPackages',[UserController::class,'packages'])->name("user.packag
 
 Route::get('userBuy/{id}',[UserController::class,'buyPackage'])->name("user.buy");
 
+Route::get('factura',[UserController::class,'factura'])->name("user.factura");
+
+Route::get('userAdmin',[UserController::class,'admin'])->name("user.admin");
+
+Route::get('userSuscriptor',[UserController::class,'suscriptor'])->name("user.suscriptor");
+
+Route::get('solicitudes',[UserController::class,'autorizacion'])->name("autorizacion.show");
+
+Route::get('/solicitudesDestroy{id}',[UserController::class,'destroyAut'])->name("autorizacion.destroy");
+
+Route::get('/solicitudesUpdate{id}{idUser}',[UserController::class,'updateAut'])->name("autorizacion.Update");
+
 //Route for show users if he user is admin
-Route::get('user/{id}',[UserController::class,'show'])->name("user.show");
+Route::get('usersEdit',[UserController::class,'show'])->name("user.show");
 
-Route::put('user/{id}',[UserController::class,'update'])->name("user.update");
+Route::get('userEdit/{id}',[UserController::class,'updateUser'])->name("user.edit");
 
-Route::delete('user/{id}', [UserController::class,'destroy'])->name("user.destroy");
+Route::get('user/{id}', [UserController::class,'destroy'])->name("user.destroy");
+
+Route::post('userDataUpdate', [UserController::class,'dataUpdate'])->name("user.data");
 //-----------------------------------------------------------------------------------------------------//
 
 //rutas para la tabla packages
@@ -67,3 +84,6 @@ Route::post('cableForm', [CableController::class,'create'])->name("cable.form");
 Route::get('telefonia',[TelefoniaController::class,'showTelefonia'])->name("telefonia.show");
 
 Route::post('telefonia',[TelefoniaController::class,'create'])->name("telefonia.form");
+
+//para cambiar plan 
+Route::get('autorizacionPlan',[AutorizacionController::class,'create'])->name("user.autorizacion");

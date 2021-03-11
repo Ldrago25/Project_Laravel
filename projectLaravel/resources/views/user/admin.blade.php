@@ -30,9 +30,9 @@
       </form>
     </div>
     <div>
-        <a href="{{route("package.show")}}">Administrar Usuarios</a>
+        <a href="{{route("user.show")}}">Administrar Usuarios</a>
         <br>
-        <a href="{{route("package.show")}}">Solicitudes para cambio de planes</a>
+        <a href="{{route("autorizacion.show")}}">Solicitudes para cambio de planes</a>
     </div>
 </body>
 </html>

@@ -141,5 +141,11 @@ class UserController extends Controller
         $result->delete();
         return redirect()->route("autorizacion.show");
     }
-    
+
+    public function close()
+    {
+       unset($_SESSION["user"]);
+       return redirect()->route("/home");
+    }
+
 }

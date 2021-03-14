@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AutorizacionController;
 use App\Http\Controllers\CableController;
+use App\Http\Controllers\CanaleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InternetController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\TelefoniaController;
 use App\Http\Controllers\UserController;
 use App\Models\Autorizacion;
+use App\Models\Canale;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +57,8 @@ Route::get('/solicitudesDestroy{id}',[UserController::class,'destroyAut'])->name
 
 Route::get('/solicitudesUpdate{id}{idUser}',[UserController::class,'updateAut'])->name("autorizacion.Update");
 
+Route::get('userClose',[UserController::class,'close'])->name("user.close");
+
 //Route for show users if he user is admin
 Route::get('usersEdit',[UserController::class,'show'])->name("user.show");
 
@@ -87,3 +91,6 @@ Route::post('telefonia',[TelefoniaController::class,'create'])->name("telefonia.
 
 //para cambiar plan 
 Route::get('autorizacionPlan',[AutorizacionController::class,'create'])->name("user.autorizacion");
+
+//rutas para programaciones
+Route::get('allCanals',[CanaleController::class,'all'])->name("canals.all");

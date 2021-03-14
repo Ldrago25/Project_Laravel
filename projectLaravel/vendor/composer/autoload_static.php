@@ -510,6 +510,7 @@ class ComposerStaticInitf5668ae5fca0a7f3cd0efb0d9da308fc
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AutorizacionController' => __DIR__ . '/../..' . '/app/Http/Controllers/AutorizacionController.php',
         'App\\Http\\Controllers\\CableController' => __DIR__ . '/../..' . '/app/Http/Controllers/CableController.php',
         'App\\Http\\Controllers\\CanaleController' => __DIR__ . '/../..' . '/app/Http/Controllers/CanaleController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -527,6 +528,7 @@ class ComposerStaticInitf5668ae5fca0a7f3cd0efb0d9da308fc
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Autorizacion' => __DIR__ . '/../..' . '/app/Models/Autorizacion.php',
         'App\\Models\\Cable' => __DIR__ . '/../..' . '/app/Models/Cable.php',
         'App\\Models\\Canale' => __DIR__ . '/../..' . '/app/Models/Canale.php',
         'App\\Models\\Internet' => __DIR__ . '/../..' . '/app/Models/Internet.php',

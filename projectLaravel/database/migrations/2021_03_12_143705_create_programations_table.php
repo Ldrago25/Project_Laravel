@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCanalesTable extends Migration
+class CreateProgramationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateCanalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('canales', function (Blueprint $table) {
+        Schema::create('programations', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->time("hour");
+            $table->date("date");
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateCanalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('canales');
+        Schema::dropIfExists('programations');
     }
 }

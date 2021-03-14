@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AutorizacionController' => $baseDir . '/app/Http/Controllers/AutorizacionController.php',
     'App\\Http\\Controllers\\CableController' => $baseDir . '/app/Http/Controllers/CableController.php',
     'App\\Http\\Controllers\\CanaleController' => $baseDir . '/app/Http/Controllers/CanaleController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
@@ -25,6 +26,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Models\\Autorizacion' => $baseDir . '/app/Models/Autorizacion.php',
     'App\\Models\\Cable' => $baseDir . '/app/Models/Cable.php',
     'App\\Models\\Canale' => $baseDir . '/app/Models/Canale.php',
     'App\\Models\\Internet' => $baseDir . '/app/Models/Internet.php',

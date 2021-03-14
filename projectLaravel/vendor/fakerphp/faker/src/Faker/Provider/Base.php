@@ -44,7 +44,7 @@ class Base
      */
     public static function randomDigitNotNull()
     {
-        return mt_rand(1, 9);
+        return mt_rand(1, 4);
     }
 
     /**

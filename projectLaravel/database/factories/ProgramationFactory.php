@@ -25,7 +25,7 @@ class ProgramationFactory extends Factory
             'name'=>$this->faker->name,
             'hour'=>now(),
             'date'=>now(),
-            'canal_id'=>$this->faker->randomDigitNotNull,
+            'canale_id'=>$this->faker->randomDigitNotNull,
         ];
     }
 }

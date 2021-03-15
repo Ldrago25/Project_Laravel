@@ -93,4 +93,6 @@ Route::post('telefonia',[TelefoniaController::class,'create'])->name("telefonia.
 Route::get('autorizacionPlan',[AutorizacionController::class,'create'])->name("user.autorizacion");
 
 //rutas para programaciones
-Route::get('allCanals',[CanaleController::class,'all'])->name("canals.all");
+Route::get('allCanals/{valor}',[CanaleController::class,'all'])->name("canals.all");
+
+Route::post('search',[CanaleController::class,'searchs'])->name("search.information");

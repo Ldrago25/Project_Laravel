@@ -1,81 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Facutra</title>
-</head>
-<body>
-        <div style="width: 100%">
-            <h1>Factura de plan</h1>
-        </div>
-        <div>
-            <table style="width: 100%">
+@extends('layouts.dashboard')
+
+@php
+    $name = $_SESSION["user"]->name;
+@endphp
+
+@section('title', $name.' : See Invoice')
+@section('user',$name)
+
+@section('content')
+
+    <div class="overlay">
+
+        <div class="cont grid">
+            <table class="table table-dark table-striped table-responsive">
+
                 <tr>
-                    <td>
-                        Nombre de Usuario
-                    </td>
-                    <td>
-                        Email
-                    </td>
-                    <td>
-                        Numero de paquete asociado
-                    </td>
-                    <td>
-                        Plan de internet 
-                    </td>
-                    <td>
-                        Plan de cable
-                    </td>
-                    <td>
-                       Plan de telefonia
-                    </td>
-                    <td>
-                        Monto a pagar
-                     </td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Package ID</td>
+                    <td>Internet Plan</td>
+                    <td>Cable Plan</td>
+                    <td>Phone Plan</td>
+                    <td>Amount</td>
                 </tr>
                 <tr>
                     <td>
                         @php
-                            echo '<h3> </h3>'.$_SESSION["user"]->name;
+                            echo $_SESSION["user"]->name;
                         @endphp
                     </td>
                     <td>
                         @php
-                         echo '<h3> </h3>'.$_SESSION["user"]->email;
+                            echo $_SESSION["user"]->email;
                         @endphp
                     </td>
                     <td>
                         @php
-                         echo '<h3> </h3>'.$_SESSION["user"]->package_id;
+                            echo $_SESSION["user"]->package_id;
                         @endphp
                     </td>
                     <td>
                         @php
-                        if($package->internet!='')
-                        echo '<h3> </h3>'.$package->internet->plan;
+                            if($package->internet!='')
+                                echo $package->internet->plan;
                        @endphp
                     </td>
                     <td>
                         @php
-                        if($package->cable!='')
-                        echo '<h3> </h3>'.$package->cable->plan;
+                            if($package->cable!='')
+                                echo $package->cable->plan;
                        @endphp
                     </td>
                     <td>
                         @php
-                        if($package->telefonia!='')
-                        echo '<h3> </h3>'.$package->telefonia->plan;
+                            if($package->telefonia!='')
+                                echo $package->telefonia->plan;
                        @endphp
                     </td>
                     <td>
                         @php
-                         echo '<h3> </h3>'.$package->monto;
+                            echo $package->monto;
                         @endphp
                      </td>
                 </tr>
             </table>
+              
         </div>
-</body>
-</html>
+
+        <div class="bot"><a class="btn btn-default active" href="{{route("user.suscriptor")}}">Back</a></div>
+        
+    </div>
+
+@endsection
+
+<script src="{{URL::asset('js/code.js')}}"></script>

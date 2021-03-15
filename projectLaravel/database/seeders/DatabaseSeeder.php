@@ -42,6 +42,6 @@ class DatabaseSeeder extends Seeder
             'name'=>'Mtv',
             'created_at'=>now()
          ]); 
-         Programation::factory(12)->create();
+         Programation::factory(40)->create();
     }
 }

@@ -1,55 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CableUnet</title>
-</head>
-<body>
+@extends('layouts.dashboard')
+
+@php
+    $name = $_SESSION["user"]->name;
+@endphp
+
+@section('title',$name)
+@section('user',$name)
+
+@php
+    if(isset($_SESSION["auto"])&&$_SESSION["auto"]=='finish'){
+        $btn = "btn disabled";
+    }else{
+        $btn = "btn";
+    }
+@endphp
+
+@section('content')
+
     @php
         if($_SESSION["user"]->package_id==''):
     @endphp
-    <div >
-        <h1>Bienvenido Usuario<h1>
-        <h3> {{$_SESSION["user"]->name}}</h3>
+
+    <div class="overlay">
+        <div class="inner">
+            <h2 class="title">Welcome {{$name}}</h2>
+            <p>
+                Welcome, you have not yet bought any package, click on buy package
+            </p>
+            <a class="btn active" href="{{route("user.packages")}}">Buy Package</a>
+        </div>            
     </div>
-    <div>
-        <form action="{{route("user.packages")}}" method="GET">
-            @csrf
-            <button type="submit">Comprar paquete</button>
-        </form>
-    </div>
+
+
     @php
         endif;
     @endphp
+
     @php
         if($_SESSION["user"]->package_id!=''):
     @endphp
-    <div >
-        <h1>Bienvenido Usuario<h1>
-        <h3> {{$_SESSION["user"]->name}}</h3>
+
+    <div class="overlay">
+
+        <div id="aux">
+            <div class="inner grid">
+                <h2 class="title">Welcome {{$name}}</h2>
+
+                <a class="btn" href="{{route("user.factura")}}">See Invoice</a>
+                <a class="{{$btn}}" href="{{route("user.autorizacion")}}">Package Change</a>
+            </div>          
+        </div>
+          
+        <div id="message" class="message">
+            @php
+                endif;
+            @endphp
+            @php
+                if(isset($_SESSION["auto"])&&$_SESSION["auto"]=='finish'):
+            @endphp
+                <script>viewmessage('Application sent successfully', 'aux')</script>
+            @php
+                unset($_SESSION["auto"]);
+                endif;
+            @endphp    
+        </div>  
     </div>
-    <div>
-        <form action="{{route("user.factura")}}" method="GET">
-             @csrf
-             <button type="submit">Ver factura a pagar</button>
-        </form>
-        <form action="{{route("user.autorizacion")}}" method="GET">
-            @csrf
-            <button type="submit">Cambiar plan del paquete</button>
-       </form>
-    </div>
-@php
-    endif;
-@endphp
-@php
-    if(isset($_SESSION["auto"])&&$_SESSION["auto"]=='finish'):
-@endphp
-<h3>Solicitud enviada con exito, esperar respuesta por los Administradores</h3>
-@php
-unset($_SESSION["auto"]);
-    endif;
-@endphp
-</body>
-</html>
+@endsection
+
+<script src="{{URL::asset('js/code.js')}}"></script>

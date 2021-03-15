@@ -1,52 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{URL::asset('css/userLogin.css')}}" type="text/css" media="all">
-    <title>Login</title>
-</head>
-<body>
-    <div id="headerTittle">
-        <h1>Pagina Web de Laravel</h1>
+@extends('layouts.layout')
+
+@section('title', 'Login')
+
+@section('content')
+
+    <div class="login">
+
+        <div id="bodyForm">
+            <!-- formulario para los datos del login-->
+        
+            <form class="form" id="form" action="{{route("user.validate")}}" method="POST">
+                <!--
+                    se crea un token para que usuarios ajenos no puedan manipular 
+                    los datos y enviarlos a la base de datos desde un navegador o
+                    luego de cierto tiempo de estar en la pagina de login y intente
+                    ingresar le diga servicio caucado 
+                -->
+                @csrf
+                <!--
+                    se crean los textfield 
+                -->
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input id="email" type="email" name="email" class="form-control" placeholder="name@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pass">Password</label>
+                    <input id="pass" type="password" name="password" class="form-control" placeholder="Password" required>
+                </div>
+
+                <button class="btn btn-default active" type="submit" id="buttonLogin">Login</button>
+            </form>
+        </div>
+
+        <div id="message" class="message">
+            @php
+                if($valueLogin=='contrasenia erronea'):
+            @endphp
+                <script>viewmessage('Incorrect password', 'bodyForm')</script>
+            @php
+                endif;
+                
+                if($valueLogin=='usuario no encontrado'):
+            @endphp
+                <script>viewmessage('User not found', 'bodyForm')</script>
+            @php
+                endif;
+            @endphp
+        </div>
+
+
     </div>
-    <div id="bodyForm">
-        <!-- formulario para los datos del login-->
-       
-        <form  id="form" action="{{route("user.validate")}}" method="POST">
-            <!--
-                se crea un token para que usuarios ajenos no puedan manipular 
-                los datos y enviarlos a la base de datos desde un navegador o
-                luego de cierto tiempo de estar en la pagina de login y intente
-                ingresar le diga servicio caucado 
-            -->
-            @csrf
-            <!--
-                se crean los textfield 
-            -->
-            <label>
-                Inicio de sesion
-            </label>
-            <input type="text" name="email" placeholder="Correo electronico" required>
-            <input type="password" name="password" placeholder="Contraseña" required>
-            <button type="submit" id="buttonLogin">Ingresar</button>
-            @php
-            if($valueLogin=='contrasenia erronea'):
-            @endphp
-            <h5>Contraseña incorrecta por favor verifique</h5>
-            @php
-            endif;
-            @endphp
-            @php
-            if($valueLogin=='usuario no encontrado'):
-            @endphp
-            <h5>Usuario no encontrado por favor revise sus credenciales</h5>
-            @php
-            endif;
-            @endphp
-        </form>
-       
-    </div>
-</body>
-</html>
+
+@endsection
+
+<script src="{{URL::asset('js/code.js')}}"></script>

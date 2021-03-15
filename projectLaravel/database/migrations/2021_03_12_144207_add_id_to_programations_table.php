@@ -14,8 +14,8 @@ class AddIdToProgramationsTable extends Migration
     public function up()
     {
         Schema::table('programations', function (Blueprint $table) {
-            $table->unsignedBigInteger("canal_id")->nullable()->after("id");
-            $table->foreign("canal_id")
+            $table->unsignedBigInteger("canale_id")->nullable()->after("id");
+            $table->foreign("canale_id")
             ->references("id")
             ->on("canales")
             ->onDelete('set null')
@@ -32,8 +32,8 @@ class AddIdToProgramationsTable extends Migration
     public function down()
     {
         Schema::table('programations', function (Blueprint $table) {
-            $table->dropForeign(['canal_id']);
-            $table->dropColumn("canal_id");
+            $table->dropForeign(['canale_id']);
+            $table->dropColumn("canale_id");
         });
     }
 }

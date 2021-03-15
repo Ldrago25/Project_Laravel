@@ -9,7 +9,7 @@ class Programation extends Model
 {
     use HasFactory;
     //relacion one to one
-    public function canal(){
+    public function canale(){
         return $this->belongsTo(Canale::class);
     }
 

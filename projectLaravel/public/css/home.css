@@ -1,18 +1,226 @@
-body {
-    background-color: white;
-    margin: 0px;
-    padding: 0px;
+
+#layout{
+    min-height: 100vh;
+    width: 100%;
+    background: url("../img/bg.jpg") repeat top center / cover;    
 }
 
-#content {
+#dash{
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgba(43, 46, 49, 0.534);
+}
+
+footer{
+    min-width: 280px;
+    width: 100%;
+    height: 70px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.overlay,
+.login,
+.create
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(43, 46, 49, 0.534);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner {
+    max-width: 35rem;
+    text-align: center;
+    color: #fff;
+    padding: 0 2rem;
+}
+
+.navbar-nav{
+    padding: 10px;
+}
+
+.inner .btn{
+    
+    background-color: gray;
+    color: white;
+}
+
+a:hover,
+.inner .btn:hover,
+.active{
+    background-color: lightseagreen;
+}
+
+header{
+    min-width: 280px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+#nav{
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
-    background-color: white;
-    color: black;
 }
 
-.edit {
-    color: black;
+#bodyForm,
+#headerTitle,
+#form {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    
+}
+
+#bodyForm {
+    color: blanchedalmond;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(43, 46, 49, 0.534);
+}
+
+#bodyFormC {
+
+    padding: 0;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    width: 300px;
+    height: 460px;
+    background-color: rgba(43, 46, 49, 0.534);
+}
+
+#package{
+    padding: 2rem;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    height: 460px;
+    background-color: rgba(43, 46, 49, 0.534);
+}
+
+#form{
+    padding-top: 1rem;
+}
+
+
+.message{
+    color:honeydew;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#msg{
+    width: 100%;
+    height: 70px;
+    padding-top: 5rem;
+    position: absolute;
+}
+
+#msg p{
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;    
+}
+
+label{
+    color: lightseagreen;
+    font-size: 20px;
+}
+
+.footer-style {
+
+    background-color: #2C3E50;
+}
+footer {
+    left: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+footer .footer-above {
+  padding-top: 50px;
+}
+footer .footer-col {
+  margin-bottom: 50px;
+}
+footer .footer-below {
+  padding: 25px 0;
+}
+
+table{
+    height: 100%;
+    width: 100%;
+    color: whitesmoke;
+    font-size: 10px;
+    flex-direction: column;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.514);
+}
+
+.red:hover{
+    background-color: tomato;
+    color: white;
+}
+
+.tab,
+.tab:hover{
+    color: white;
+    font-size: 10px;
+}
+
+.cont{    
+    display: flex;
+    height: auto;
+    max-height: 60%;
+    overflow: auto;
+}
+
+.bot{
+    position: absolute;
+    bottom: 75px;
+}
+
+#search{
+    position: absolute;
+    top: 100px;
+    display: inline-flex;
+    padding: 5px;
+    width: 50%;
+}
+
+#seb{
+    width: 20px;
+}
+
+.programation{
+    padding-top: 45px;
+    display: flex;
+    height: auto;
+    max-height: 60%;
+    max-width: 90%;
+    overflow: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#tds{
+    color: red;
 }
